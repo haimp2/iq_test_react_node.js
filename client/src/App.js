@@ -6,11 +6,11 @@ import MainPage from './pages/mainapge/mainpage.component';
 
 function App() {
   return (
-  <Switch>
-    <Route path='/login' component={LoginPage}/>
-    <Route path='/main' component={MainPage}/>
-  </Switch>
-  // <MainPage/>
+  // <Switch>
+  //   <Route path='/login' component={LoginPage}/>
+  //   <Route path='/main' component={MainPage}/>
+  // </Switch>
+  <LoginPage/>
   );
 }
 
