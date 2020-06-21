@@ -1,0 +1,21 @@
+.cards-container{
+    width: fit-content;
+    margin: 0 auto;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 34px;
+
+}
+
+.cards-answers-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: fit-content;
+    grid-gap: 36px;
+    margin: 0 auto;
+}
+
+button{
+    margin: 0 auto;
+}
