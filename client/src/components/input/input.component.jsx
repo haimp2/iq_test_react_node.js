@@ -7,13 +7,13 @@ const Input = ({ handelChange, lable, ...otherProps }) => (
         {
             lable ?
                 (
-                    <lable
+                    <div
                         className={`${
                             otherProps.value.length ? 'shrink' : ''}
                         form-input-label`}>
                         {lable}
 
-                    </lable>)
+                    </div>)
                 : null
         }
     </div>

@@ -6,6 +6,7 @@ const path = require('path');
 const loginRoutes = require('./routes/login.route');
 const addNewQuestionRoutes = require('./routes/add-new-question.route');
 const mainRoutes = require('./routes/main.route');
+const signUpRoute = require('./routes/sign-up.route')
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next)=>{
 app.use('/login', loginRoutes);
 app.use('/add', addNewQuestionRoutes);
 app.use('/main', mainRoutes);
+app.use('sign-up', signUpRoute)
 app.use(express.static(path.join(__dirname +  '/public')));
 
 

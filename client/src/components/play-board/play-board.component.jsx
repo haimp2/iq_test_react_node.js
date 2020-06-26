@@ -9,7 +9,7 @@ const imageBaseUrl = 'http://localhost:5000/main';
 class PlayBoard extends React.Component {
     constructor() {
         super()
-        
+
 
         this.state = {
 
@@ -19,18 +19,19 @@ class PlayBoard extends React.Component {
         }
 
     }
-        componentDidMount(){
-            
-            fetch(imageBaseUrl)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    cards: data.cardsList,
-                    answerCards: data.answerCardList.sort( () => Math.random() - 0.5)
-                });
-            });
+   async componentDidMount() {
 
+        try{
+        const response = await fetch(imageBaseUrl)
+        const data = response.json();
+        this.setState({
+            cards: data.cardsList,
+            answerCards: data.answerCardList.sort(() => Math.random() - 0.5)
+        });}
+        catch(err){
+            console.log(err);
         }
+    }
 
 
     render() {
@@ -39,12 +40,12 @@ class PlayBoard extends React.Component {
                 <div className='cards-container'>
                     {this.state.cards.map(({ imageUrl, id }) => (
                         <Card k
-                        ey={id} imageUrl={imageUrl} style = '' />
+                            ey={id} imageUrl={imageUrl} style='' />
                     ))}
                 </div>
                 <div className='cards-answers-container'>
                     {this.state.answerCards.map(({ imageUrl, id }) => (
-                        <Card key={id} imageUrl={imageUrl} style='answer'/>
+                        <Card key={id} imageUrl={imageUrl} style='answer' />
                     ))}
                 </div>
             </div>

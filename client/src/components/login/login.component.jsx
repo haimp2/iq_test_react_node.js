@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.styles.scss';
 import FormInput from '../input/input.component'
+import { useHistory } from "react-router-dom";
 
 class Login extends React.Component {
     constructor() {
@@ -11,10 +12,18 @@ class Login extends React.Component {
         }
     }
 
+
+
     handleSubmit = event =>{
         event.preventDeafult();
         this.setState({
-            username: ''
+            username: '',
+        })
+        //const uuid= uuid.anaharef();
+        const payload={userName:this.state.username,uuid:uuid};
+        fetch('sign-up',payload).then(resp=>{
+            const history = useHistory();
+            history.push("/main");  
         })
     }
 
