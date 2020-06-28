@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../card/card.component';
 import './play-board.styles.scss';
 
-const imageBaseUrl = 'http://localhost:5000/main';
+const BASE_URL = 'http://localhost:5000';
 
 
 
@@ -19,18 +19,17 @@ class PlayBoard extends React.Component {
         }
 
     }
-   async componentDidMount() {
 
-        try{
-        const response = await fetch(imageBaseUrl)
-        const data = response.json();
-        this.setState({
+    componentDidMount() {
+
+        fetch(`${BASE_URL}/main`)
+        .then(res => res.json())
+        .then(data => this.setState({
             cards: data.cardsList,
             answerCards: data.answerCardList.sort(() => Math.random() - 0.5)
-        });}
-        catch(err){
-            console.log(err);
-        }
+        }))
+        .catch(err => console.log(err));
+
     }
 
 
@@ -39,8 +38,7 @@ class PlayBoard extends React.Component {
             <div>
                 <div className='cards-container'>
                     {this.state.cards.map(({ imageUrl, id }) => (
-                        <Card k
-                            ey={id} imageUrl={imageUrl} style='' />
+                        <Card key={id} imageUrl={imageUrl} style='' />
                     ))}
                 </div>
                 <div className='cards-answers-container'>

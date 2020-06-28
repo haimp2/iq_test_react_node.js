@@ -24,7 +24,7 @@ app.use((req, res, next)=>{
 app.use('/login', loginRoutes);
 app.use('/add', addNewQuestionRoutes);
 app.use('/main', mainRoutes);
-app.use('sign-up', signUpRoute)
+app.use('/sign-up', signUpRoute);
 app.use(express.static(path.join(__dirname +  '/public')));
 
 

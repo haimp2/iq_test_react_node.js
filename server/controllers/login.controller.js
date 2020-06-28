@@ -1,8 +1,9 @@
-const jwt = require("jsonwebtoken");
-
 const errors = require('../consts/errors');
 
 exports.logIn = async (req, res, next) => {
+
+    
+    console.log('subs')
 
     let token = req.headers.authorization;
     if(!token){
