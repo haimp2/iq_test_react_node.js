@@ -6,4 +6,8 @@ const router = express.Router();
 
 router.post('/', singnUpController.signUp);
 
+router.post('/validation', singnUpController.logIn);
+
+
+
 module.exports = router;

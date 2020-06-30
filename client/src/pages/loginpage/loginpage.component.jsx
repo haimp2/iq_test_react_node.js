@@ -10,29 +10,35 @@ const LoginPage = (props) => {
 
     const userName = localStorage.getItem('userName');
     const uuid = localStorage.getItem('uuid');
+
+    console.log(userName, uuid);
+
     if (userName && uuid) {
-        const body = { userName: userName, uuid: uuid }
-        fetch(`${BASE_URL}/sign-up`, body).then(resp => {
-            resp = resp.json();
-            if (resp.status === 201) {
-                alert(resp.body.mgs)
-                withRouter(({ history }) => {
-                    history.goForward('/main')
-                })
+        const body = {
+            method: 'post',
+            body: JSON.stringify({ 'userName': userName, 'uuid': uuid }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        fetch(`${BASE_URL}/sign-up/validation`, body).then(res => {
+            if (res.status === 200) {
+                props.history.push('/main')
             }
 
         }).catch(err => {
-
+            console.log(err);
         })
     }
 
-    const moveToMainPage = () =>{
+    const moveToMainPage = () => {
         props.history.push('/main')
     }
+
     return (<div className='login-page-container'>
         <div className='login-page-content'>
             <h1>Login</h1>
-            <Login moveToMain = {moveToMainPage}/>
+            <Login moveToMain={moveToMainPage} />
         </div>
     </div>)
 }

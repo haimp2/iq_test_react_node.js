@@ -29,7 +29,9 @@ class Login extends React.Component {
             }
         };
         fetch(`${BASE_URL}/sign-up`, payload).then(resp => {
-            if (resp.status === 200) {
+            if (resp.status === 201) {
+                localStorage.setItem('userName', this.state.username);
+                localStorage.setItem('uuid', uuid);
                 this.props.moveToMain();
             }
         }).catch(err => {
